@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 // use instatiate to spawn 
 public class WaveSpawner : MonoBehaviour
@@ -8,7 +9,9 @@ public class WaveSpawner : MonoBehaviour
 	public Transform spawnPoint;
 
 	public float waveInterval = 5f;
-	private float countdown = 2f;
+	private float countdown = 0f;
+
+	public Text waveCountdownText;
 
 	private int waveIndex = 0;
 
@@ -18,9 +21,12 @@ public class WaveSpawner : MonoBehaviour
 		{
 			StartCoroutine(SpawnWave());
 			countdown = waveInterval;
+			
 		}
-
+		
+		waveCountdownText.text = "Sphere Wave in: " + Mathf.CeilToInt(countdown).ToString();
 		countdown -= Time.deltaTime;
+		
 	}
 	
 	IEnumerator SpawnWave()

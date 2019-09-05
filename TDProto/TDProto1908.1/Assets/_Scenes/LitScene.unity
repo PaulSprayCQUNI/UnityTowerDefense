@@ -11028,7 +11028,7 @@ GameObject:
   - component: {fileID: 1217809998}
   - component: {fileID: 1217809997}
   m_Layer: 5
-  m_Name: Text
+  m_Name: WaveTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11101,7 +11101,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 20
+  m_Text: 'Sphere Wave In: 5'
 --- !u!222 &1217809999
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19448,6 +19448,7 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2071917717}
   waveInterval: 5
+  waveCountdownText: {fileID: 1217809998}
 --- !u!4 &2077132797
 Transform:
   m_ObjectHideFlags: 0
