@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1274029987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274029988}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1274029988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274029987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: 0.506, z: 2.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1169981292164544908}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169981292164544915
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,6 +58,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4642559404186590555}
+  - {fileID: 1274029988}
   m_Father: {fileID: 4642559404186590553}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 30.036001, z: 0}
@@ -76,10 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e6133fe11cbbb48905df12c19f335f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   range: 15
+  fireRate: 2
   partToRotate: {fileID: 1169981292164544908}
-  trackSpeed: 5
+  trackSpeed: 10
+  bulletPrefab: {fileID: 4547184538340531603, guid: 5cd9e69566841ac42baeceeaab695ea7,
+    type: 3}
+  firePoint: {fileID: 1274029988}
 --- !u!1 &4642559404187009403
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4642559404187009403}
   m_LocalRotation: {x: -0.0020649135, y: -0.0020650027, z: -0.70710385, w: -0.7071037}
-  m_LocalPosition: {x: 0.09113973, y: 0.6053928, z: 1.8404622}
+  m_LocalPosition: {x: 0.021, y: 0.617, z: 1.841}
   m_LocalScale: {x: 0.044139706, y: 0.04413971, z: 0.04413967}
   m_Children: []
   m_Father: {fileID: 1169981292164544908}

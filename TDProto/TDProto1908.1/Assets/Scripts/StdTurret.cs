@@ -77,9 +77,15 @@ public class StdTurret : MonoBehaviour
 
 	void ShootBullet ()
 	{
+        //instatiate a GameObject of bullet class in StdTurret by casting
 
-		Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-		Debug.Log("Bullet Shot");
+		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if (bullet != null)
+            bullet.TargetSeek(target);
+        
+        Debug.Log("Bullet Shot");
 	}
 
 	void OnDrawGizmosSelected()
