@@ -18,10 +18,10 @@ public class CameraController : MonoBehaviour
     {
         
 		if (Input.GetKeyDown(KeyCode.Q))
-        panToggle = !panToggle;
+			panToggle = !panToggle;
 
 		if(!panToggle)
-		return;
+			return;
         
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBuffer)
 		{
@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
 		Vector3 pos = transform.position;
 
 		pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
-		pos.y = Mathf.Clamp(pos.y, minY, maxY);
+		pos.y = Mathf.Clamp (pos.y, minY, maxY);
 		transform.position = pos;
 
     }
