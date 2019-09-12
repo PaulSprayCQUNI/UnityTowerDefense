@@ -3,7 +3,7 @@
 public class CameraController : MonoBehaviour
 {
 	
-	private bool panContinue = true;
+	private bool panToggle = true;
 	
 	public float camPanSpeed = 20f;
 	public float panBuffer = 10f;
@@ -11,17 +11,19 @@ public class CameraController : MonoBehaviour
 	public float scrollSpeed = 5f;
 	public float minY = 10f;
 	public float maxY = 80f;
+   
     // Update is called once per frame
     void Update()
+
     {
+        
+		if (Input.GetKeyDown(KeyCode.Q))
+        panToggle = !panToggle;
 
-		if(Input.GetKeyDown (KeyCode.Q))
-		panContinue = !panContinue;
-
-		if(!panContinue)
+		if(!panToggle)
 		return;
-
-		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBuffer)
+        
+        if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBuffer)
 		{
 			transform.Translate(Vector3.forward * camPanSpeed * Time.deltaTime, Space.World);
 		}
@@ -48,6 +50,6 @@ public class CameraController : MonoBehaviour
 		pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
 		pos.y = Mathf.Clamp(pos.y, minY, maxY);
 		transform.position = pos;
-		
-	 }
+
+    }
 }
