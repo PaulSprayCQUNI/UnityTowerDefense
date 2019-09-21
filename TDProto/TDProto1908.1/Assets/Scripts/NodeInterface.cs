@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NodeInterface : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class NodeInterface : MonoBehaviour
 	private Renderer rendit;
 	private Color initColor;
 
+    private BuildManagement buildManagement;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +23,19 @@ public class NodeInterface : MonoBehaviour
 
 	rendit = GetComponent<Renderer>();
 	initColor = rendit.material.color;
+
+    buildManagement = BuildManagement.instance;
         
     }
 
 	void OnMouseDown ()
-	{
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if(buildManagement.GetTurretToBuild() == null)
+            return;
+
 		if(turret != null)
 		{
 			Debug.Log("Can't build on another turret - soz TODO - for UI later");
@@ -33,17 +43,21 @@ public class NodeInterface : MonoBehaviour
 		}
 		// Build a turret if turret == null, with instatiation, that is integrated as part of a build manager
 
-		GameObject turretToBuild =  BuildManagement.instance.GetTurretToBuild();
+		GameObject turretToBuild =  buildManagement.GetTurretToBuild();
 		turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-
-
-		 
-
+        
 	}
 
 	void OnMouseEnter ()
 	{
-		rendit.material.color = hoverColor;
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (buildManagement.GetTurretToBuild() == null)
+            return;
+
+        rendit.material.color = hoverColor;
 	}
    
    void OnMouseExit ()
