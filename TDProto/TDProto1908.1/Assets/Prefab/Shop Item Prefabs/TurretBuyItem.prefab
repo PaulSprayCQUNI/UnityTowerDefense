@@ -196,7 +196,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: cf6c668cd0905424088754c8e61c5254, type: 3}
         m_MethodName: StandardTurretBuy
         m_Mode: 1
         m_Arguments:

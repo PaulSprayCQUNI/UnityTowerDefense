@@ -8173,13 +8173,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3217886173533817722, guid: 850dbdff69b860b4490ef67049792643,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217886173533817722, guid: 850dbdff69b860b4490ef67049792643,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 554737004}
     - target: {fileID: 3217886173533817722, guid: 850dbdff69b860b4490ef67049792643,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MissileTurretBuy
+      value: MissileLauncherBuy
       objectReference: {fileID: 0}
     - target: {fileID: 3217886173533817722, guid: 850dbdff69b860b4490ef67049792643,
         type: 3}
@@ -8195,6 +8200,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.14017446
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217886173533817722, guid: 850dbdff69b860b4490ef67049792643,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217886173533817722, guid: 850dbdff69b860b4490ef67049792643,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3217886173533817721, guid: 850dbdff69b860b4490ef67049792643,
         type: 3}
@@ -19861,7 +19876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 4642559404187009401, guid: 341c8984361e56f418086fb4dbd59670,
     type: 3}
-  missileTurretPrefab: {fileID: 2428219448953023837, guid: c143f4bc942c5784baacdb33f14c36fc,
+  missileLauncherPrefab: {fileID: 2428219448953023837, guid: c143f4bc942c5784baacdb33f14c36fc,
     type: 3}
 --- !u!1001 &2083682357
 PrefabInstance:
