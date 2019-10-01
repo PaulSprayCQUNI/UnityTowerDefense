@@ -6,7 +6,10 @@ public class NodeInterface : MonoBehaviour
 
 	public Color hoverColor;
 	public Vector3 positionOffset;
-	private GameObject turret;
+
+    // GameObject made public for option of turrets in place before Start(), per BuildManagement function
+    [Header("Optional")]
+    public GameObject turret;
 
 	/* avoid having all nodes storing their own reference to BuildManagement, 
 	instead make it available via a Singleton pattern to make access of an instance of the BuildManagement easier
@@ -28,12 +31,19 @@ public class NodeInterface : MonoBehaviour
         
     }
 
+    // helper function called in BuildManagement
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
+
 	void OnMouseDown ()
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-
-        if(buildManagement.GetTurretToBuild() == null)
+        // changed call to condition check in BuildManagement class to call a property in same class
+        // same applied to MouseEnter
+        if (!buildManagement.CanBuild)
             return;
 
 		if(turret != null)
@@ -41,20 +51,17 @@ public class NodeInterface : MonoBehaviour
 			Debug.Log("Can't build on another turret - soz TODO - for UI later");
 			return;
 		}
-		// Build a turret if turret == null, with instatiation, that is integrated as part of a build manager
-
-		GameObject turretToBuild =  buildManagement.GetTurretToBuild();
-		turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-        
-	}
+		// 1st October replaced instantiation based on condition of turret == null with function called within BuildManagement
+        buildManagement.BuildTurretOn(this);
+    }
 
 	void OnMouseEnter ()
 	{
 
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-
-        if (buildManagement.GetTurretToBuild() == null)
+      
+        if (!buildManagement.CanBuild)
             return;
 
         rendit.material.color = hoverColor;

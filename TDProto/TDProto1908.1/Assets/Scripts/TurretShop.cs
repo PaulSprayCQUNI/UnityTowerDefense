@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurretShop : MonoBehaviour
 {
+    public TurretSchema standardTurret;
+    public TurretSchema missileLauncher;
 
     //reference to BuildManagement added 160919
     BuildManagement buildManagement;
@@ -15,16 +17,16 @@ public class TurretShop : MonoBehaviour
     }
 
 
-    public void StandardTurretBuy()
+    public void SelectStandardTurret()
     {
         Debug.Log("standard turret selected");
-        buildManagement.SetTurretToBuilder(buildManagement.standardTurretPrefab);
+        buildManagement.SelectTurretToBuild(standardTurret);
     }
 
-    public void MissileLauncherBuy()
+    public void SelectMissileLauncher()
     {
         Debug.Log("missile launcher selected");
-        buildManagement.SetTurretToBuilder(buildManagement.missileLauncherPrefab);
+        buildManagement.SelectTurretToBuild(missileLauncher);
     }
 
     public void LaserTurretBuy()

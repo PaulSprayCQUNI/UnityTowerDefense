@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Experimental.UIElements.GraphView;
+using UnityEngine;
 
 public class BuildManagement : MonoBehaviour
 {
@@ -23,17 +24,25 @@ public class BuildManagement : MonoBehaviour
     public GameObject missileLauncherPrefab;
 
 	
-	private GameObject turretToBuild;
+	private TurretSchema turretToBuild;
 
-	public GameObject GetTurretToBuild()
-	{
-		return turretToBuild;
-	}
+    // 1st October introducing a property of public bool variable called CanBuild
+    public bool CanBuild
+    {
+        get { return turretToBuild != null; }
+    }
 
-    public void SetTurretToBuilder(GameObject turret)
+    public void BuildTurretOn(NodeInterface node)
+    {
+        
+        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+        node.turret = turret;
+
+    }
+
+	public void SelectTurretToBuild(TurretSchema turret)
     {
         turretToBuild = turret;
     }
-
 
 }
