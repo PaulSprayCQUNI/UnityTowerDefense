@@ -5,6 +5,7 @@ public class NodeInterface : MonoBehaviour
 {
 
 	public Color hoverColor;
+    public Color notEnoughCredColor;
 	public Vector3 positionOffset;
 
     // GameObject made public for option of turrets in place before Start(), per BuildManagement function
@@ -15,7 +16,7 @@ public class NodeInterface : MonoBehaviour
 	instead make it available via a Singleton pattern to make access of an instance of the BuildManagement easier
 	*/
 
-	private Renderer rendit;
+	private Renderer rend;
 	private Color initColor;
 
     private BuildManagement buildManagement;
@@ -24,8 +25,8 @@ public class NodeInterface : MonoBehaviour
     void Start()
     {
 
-	rendit = GetComponent<Renderer>();
-	initColor = rendit.material.color;
+	rend = GetComponent<Renderer>();
+	initColor = rend.material.color;
 
     buildManagement = BuildManagement.instance;
         
@@ -64,11 +65,18 @@ public class NodeInterface : MonoBehaviour
         if (!buildManagement.CanBuild)
             return;
 
-        rendit.material.color = hoverColor;
+        if (buildManagement.HasCreds)
+        {
+            rend.material.color = hoverColor;
+        } else
+        {
+            rend.material.color = notEnoughCredColor;
+        }
+
 	}
    
    void OnMouseExit ()
    {
-   	   rendit.material.color = initColor;	 
+   	   rend.material.color = initColor;	 
    }
 }

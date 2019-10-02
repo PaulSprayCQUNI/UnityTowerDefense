@@ -32,12 +32,26 @@ public class BuildManagement : MonoBehaviour
         get { return turretToBuild != null; }
     }
 
+    public bool HasCreds
+    {
+        get { return PlayerStats.Creds >= turretToBuild.schemaCost; }   
+    }
+
     public void BuildTurretOn(NodeInterface node)
     {
+
+        if (PlayerStats.Creds < turretToBuild.schemaCost)
+        {
+            Debug.Log("Not enough creds to build that!");
+            return;
+        }
+
+        PlayerStats.Creds -= turretToBuild.schemaCost;
         
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
 
+        Debug.Log("Turret Built, Creds remaining: " + PlayerStats.Creds);
     }
 
 	public void SelectTurretToBuild(TurretSchema turret)

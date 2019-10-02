@@ -15,6 +15,8 @@ public class WaveSpawner : MonoBehaviour
 
 	private int waveIndex = 0;
 
+
+
 	void Update()
 	{
 		if (countdown <= 0f)
@@ -24,10 +26,12 @@ public class WaveSpawner : MonoBehaviour
 			
 		}
 		
-		waveCountdownText.text = "Sphere Wave in: " + Mathf.CeilToInt(countdown).ToString();
-		countdown -= Time.deltaTime;
 		
-	}
+		countdown -= Time.deltaTime;
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+        waveCountdownText.text = string.Format("Wave: {0:00.00}", countdown);
+    }
 	
 	IEnumerator SpawnWave()
 	{
