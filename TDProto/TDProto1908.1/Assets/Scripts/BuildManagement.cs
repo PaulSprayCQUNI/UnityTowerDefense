@@ -22,6 +22,7 @@ public class BuildManagement : MonoBehaviour
 
 	public GameObject standardTurretPrefab;
     public GameObject missileLauncherPrefab;
+    public GameObject buildEffect;
 
 	
 	private TurretSchema turretToBuild;
@@ -51,6 +52,8 @@ public class BuildManagement : MonoBehaviour
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
 
+        GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity));
+        Destroy(effect, 5f);
         Debug.Log("Turret Built, Creds remaining: " + PlayerStats.Creds);
     }
 
